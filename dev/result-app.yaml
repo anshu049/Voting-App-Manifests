@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: result-app
-        image: anshuhtwt/anshuhtwt-result-app
+        image: anshuhtwt/result-app
         ports:
         - containerPort: 80
 
