@@ -19,16 +19,21 @@ spec:
         name: voting-app-pod
         app: voting-app
     spec:
-      tolerations:
-      - key: "public"
-        operator: "Equal"
-        value: "true"
-        effect: "NoSchedule"
+      affinity:
+        nodeAffinity:                   
+          requiredDuringSchedulingIgnoredDuringExecution:  # Pods will be scheduled even if the affinity rules are not met initially, but will not be moved if the rules are violated after they are running.
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: public
+                operator: In
+                values:
+                - true
       containers:
       - name: voting-app
         image: anshuhtwt/voting-app
         ports:
         - containerPort: 80
+
 
 
 ---
