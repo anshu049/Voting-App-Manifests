@@ -8,12 +8,7 @@ spec:
   source:
     repoURL: https://github.com/anshuhtwt/Voting-App-Manifests.git
     targetRevision: HEAD
-    path: 
-      - voting-app
-      - redis
-      - worker
-      - postgress
-      - result-app
+    path: manifests
   destination:
     server: https://kubernetes.default.svc
     namespace: myapp
