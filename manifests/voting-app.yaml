@@ -1,0 +1,54 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: voting-app-deploy
+  labels:
+    name: voting-app-deploy
+    app: voting-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: voting-app-pod
+      app: voting-app
+  template:
+    metadata:
+      name: voting-app-pod
+      labels:
+        name: voting-app-pod
+        app: voting-app
+    spec:
+      affinity:
+        nodeAffinity:                   
+          requiredDuringSchedulingIgnoredDuringExecution:  # Pods will be scheduled even if the affinity rules are not met initially, but will not be moved if the rules are violated after they are running.
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: public
+                operator: In
+                values:
+                - true
+      containers:
+      - name: voting-app
+        image: anshuhtwt/voting-app
+        ports:
+        - containerPort: 80
+
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: voting-service
+  labels:
+    name: voting-service
+    app: voting-app
+spec:
+  selector:
+    name: voting-app-pod
+    app: voting-app
+  ports:
+  - port: 80
+    targetPort: 80
+  type: LoadBalancer
