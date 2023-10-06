@@ -24,15 +24,6 @@ spec:
         operator: "Equal"
         value: "true"
         effect: "NoSchedule"
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: subnet
-                operator: In
-                values:
-                - public
       containers:
       - name: result-app
         image: anshuhtwt/result-app
