@@ -18,17 +18,21 @@ spec:
       labels:
         name: result-app-pod
         app: voting-app
-    spec:
-      tolerations:
-      - key: "public"
-        operator: "Equal"
-        value: "true"
-        effect: "NoSchedule"
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: public
+                operator: In
+                values:
+                - true
       containers:
       - name: result-app
         image: anshuhtwt/result-app
         ports:
         - containerPort: 80
+
 
 
 
