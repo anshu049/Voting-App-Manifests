@@ -18,15 +18,7 @@ spec:
       labels:
         name: result-app-pod
         app: voting-app
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:          # Pods will be scheduled even if the affinity rules are not met initially, but will not be moved if the rules are violated after they are running.
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: public
-                operator: In
-                values:
-                - true
+    spec:
       containers:
       - name: result-app
         image: anshuhtwt/result-app
