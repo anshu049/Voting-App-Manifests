@@ -19,11 +19,26 @@ spec:
         name: voting-app-pod
         app: voting-app
     spec:
+      tolerations:
+      - key: "public"
+        operator: "Equal"
+        value: "true"
+        effect: "NoSchedule"
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: subnet
+                operator: In
+                values:
+                - public
       containers:
       - name: voting-app
         image: anshuhtwt/voting-app
         ports:
         - containerPort: 80
+
 
 ---
 apiVersion: v1
