@@ -24,7 +24,7 @@ spec:
       containers:
       - name: worker-app
         image: anshu049/worker
-    affinity:  
+      affinity:  
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
@@ -32,4 +32,4 @@ spec:
               - key: private
                 operator: In
                 values:
-                - true    
+                - "true"    
