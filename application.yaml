@@ -6,15 +6,18 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/anshuhtwt/Voting-App-Manifests.git
+    repoURL: https://github.com/anshu049/Voting-App-Manifests
     targetRevision: HEAD
     path: manifests
+    directory:
+      recurse: true  # Fetch changes from all directories recursively
   destination:
     server: https://kubernetes.default.svc
-    namespace: myapp
+    namespace: voting-app
   syncPolicy:
     automated:
       selfHeal: true
       prune: true
     syncOptions:
       - CreateNamespace=true
+      - Validate=false  # Disable validation to speed up sync
