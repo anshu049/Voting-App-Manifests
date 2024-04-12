@@ -21,3 +21,6 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - Validate=false  # Disable validation to speed up sync
+
+
+      
