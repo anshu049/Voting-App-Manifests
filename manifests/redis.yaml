@@ -33,3 +33,5 @@ spec:
     targetPort: 6379
   selector:
     name: redis-pod
+
+    
