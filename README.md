@@ -1,1 +1,1 @@
-This repo contain all the manifest file of Voting App.
+This repo contain all the manifest file of Voting App
